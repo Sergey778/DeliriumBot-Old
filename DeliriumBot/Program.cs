@@ -8,19 +8,19 @@ namespace DeliriumBot
 {
     class Card
     {
-        public string Name { get; private set; }
-        public int Amount { get; set; }
-        public string Describtion { get; private set; }
-        public Card(string name, int amount, string desc)
+        public string Name { get; }
+        public int Amount { get; }
+        public string Description { get; }
+        public Card(string name, int amount, string description)
         {
             Name = name;
             Amount = amount;
-            Describtion = desc;
+            Description = description;
         }
     }
     class Program
     {
-        public static string DBotToken { get; } = DeliriumBot.Resources.BotToken;
+        private static string DBotToken { get; } = DeliriumBot.Resources.BotToken;
         private static Telegram.Bot.TelegramBotClient bot;
         private static IEnumerable<Card> CardSet = GetCardSet();
         private static Card PreviousCard;
@@ -33,13 +33,13 @@ namespace DeliriumBot
             while (true) { }
         }
 
-        static void OnReceiveMessage(object sender, Telegram.Bot.Args.MessageEventArgs args)
+        private static void OnReceiveMessage(object sender, Telegram.Bot.Args.MessageEventArgs args)
         {
             if (args.Message.Text == "?")
             {
-                bot.SendTextMessageAsync(args.Message.Chat.Id, PreviousCard.Describtion);
+                bot.SendTextMessageAsync(args.Message.Chat.Id, PreviousCard.Description);
             }
-            else if (args.Message.Text.ToUpper() == "RSETART" || args.Message.Text.ToUpper() == "NEWGAME")
+            else if (args.Message.Text.ToLower() == "/restart" || args.Message.Text.ToLower() == "/newgame")
             {
                 Cards = GetShuffledCardSet(CardSet);
                 bot.SendTextMessageAsync(args.Message.Chat.Id, "Раздача с новой колоды");
@@ -89,7 +89,7 @@ namespace DeliriumBot
             }
             return Shuffle(result);
         }
-        public static List<Card> GetCardSet()
+        private static List<Card> GetCardSet()
         {
             return new List<Card>
             {
