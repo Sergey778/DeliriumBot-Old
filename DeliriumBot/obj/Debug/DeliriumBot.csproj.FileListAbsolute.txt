@@ -10,3 +10,6 @@ c:\users\georgy\documents\visual studio 2015\Projects\DeliriumBot\DeliriumBot\bi
 c:\users\georgy\documents\visual studio 2015\Projects\DeliriumBot\DeliriumBot\obj\Debug\DeliriumBot.csprojResolveAssemblyReference.cache
 c:\users\georgy\documents\visual studio 2015\Projects\DeliriumBot\DeliriumBot\obj\Debug\DeliriumBot.exe
 c:\users\georgy\documents\visual studio 2015\Projects\DeliriumBot\DeliriumBot\obj\Debug\DeliriumBot.pdb
+C:\Users\evalo\Source\Repos\DeliriumBot\DeliriumBot\bin\Debug\DeliriumBot.exe.config
+C:\Users\evalo\Source\Repos\DeliriumBot\DeliriumBot\obj\Debug\DeliriumBot.exe
+C:\Users\evalo\Source\Repos\DeliriumBot\DeliriumBot\obj\Debug\DeliriumBot.pdb
