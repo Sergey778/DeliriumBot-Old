@@ -13,3 +13,17 @@ c:\users\georgy\documents\visual studio 2015\Projects\DeliriumBot\DeliriumBot\ob
 C:\Users\evalo\Source\Repos\DeliriumBot\DeliriumBot\bin\Debug\DeliriumBot.exe.config
 C:\Users\evalo\Source\Repos\DeliriumBot\DeliriumBot\obj\Debug\DeliriumBot.exe
 C:\Users\evalo\Source\Repos\DeliriumBot\DeliriumBot\obj\Debug\DeliriumBot.pdb
+C:\Users\Сергей\Source\Repos\DeliriumBot\DeliriumBot\bin\Debug\DeliriumBot.exe.config
+C:\Users\Сергей\Source\Repos\DeliriumBot\DeliriumBot\obj\Debug\DeliriumBot.exe
+C:\Users\Сергей\Source\Repos\DeliriumBot\DeliriumBot\obj\Debug\DeliriumBot.pdb
+C:\Users\Сергей\Source\Repos\DeliriumBot\DeliriumBot\obj\Debug\DeliriumBot.csprojResolveAssemblyReference.cache
+C:\Users\Сергей\Source\Repos\DeliriumBot\DeliriumBot\obj\Debug\DeliriumBot.Resources.resources
+C:\Users\Сергей\Source\Repos\DeliriumBot\DeliriumBot\obj\Debug\DeliriumBot.csproj.GenerateResource.Cache
+C:\Users\Сергей\Source\Repos\DeliriumBot\DeliriumBot\bin\Debug\DeliriumBot.exe
+C:\Users\Сергей\Source\Repos\DeliriumBot\DeliriumBot\bin\Debug\DeliriumBot.pdb
+C:\Users\Сергей\Source\Repos\DeliriumBot\DeliriumBot\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Сергей\Source\Repos\DeliriumBot\DeliriumBot\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\Сергей\Source\Repos\DeliriumBot\DeliriumBot\bin\Debug\Telegram.Bot.dll
+C:\Users\Сергей\Source\Repos\DeliriumBot\DeliriumBot\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Сергей\Source\Repos\DeliriumBot\DeliriumBot\bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\Сергей\Source\Repos\DeliriumBot\DeliriumBot\bin\Debug\Telegram.Bot.xml

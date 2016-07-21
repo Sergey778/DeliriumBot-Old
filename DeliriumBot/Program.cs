@@ -35,12 +35,13 @@ namespace DeliriumBot
 
         private static void OnReceiveMessage(object sender, Telegram.Bot.Args.MessageEventArgs args)
         {
-            if (args.Message.Text == "?")
+            if (args.Message.Text == "?" && PreviousCard != null)
             {
                 bot.SendTextMessageAsync(args.Message.Chat.Id, PreviousCard.Description);
             }
             else if (args.Message.Text.ToLower() == "/restart" || args.Message.Text.ToLower() == "/newgame")
             {
+                PreviousCard = null;
                 Cards = GetShuffledCardSet(CardSet);
                 bot.SendTextMessageAsync(args.Message.Chat.Id, "Раздача с новой колоды");
             }
@@ -51,6 +52,7 @@ namespace DeliriumBot
             else
             {
                 var answer = NextCard(Cards);
+                PreviousCard = answer.Item1;
                 Cards = answer.Item2;
                 bot.SendTextMessageAsync(args.Message.Chat.Id, answer.Item1.Name);
             }
