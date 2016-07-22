@@ -20,14 +20,12 @@ namespace DeliriumBot
         private static IEnumerable<T> Shuffle<T>(List<T> list)
         {
             var random = new Random();
-            int n = list.Count;
-            while (n > 1)
+            for (int i = list.Count(); i > 1; i--)
             {
-                n--;
-                int k = random.Next(n + 1);
-                T value = list[k];
-                list[k] = list[n];
-                list[n] = value;
+                int r = random.Next(i + 1);
+                var temp = list[r];
+                list[r] = list[i];
+                list[i] = temp;
             }
             return list;
         }
