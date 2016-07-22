@@ -6,18 +6,6 @@ using System.Threading.Tasks;
 
 namespace DeliriumBot
 {
-    class Card
-    {
-        public string Name { get; }
-        public int Amount { get; }
-        public string Description { get; }
-        public Card(string name, int amount, string description)
-        {
-            Name = name;
-            Amount = amount;
-            Description = description;
-        }
-    }
     class Program
     {
         private static string DBotToken { get; } = DeliriumBot.Resources.BotToken;
