@@ -27,3 +27,4 @@ C:\Users\Сергей\Source\Repos\DeliriumBot\DeliriumBot\bin\Debug\Telegram.Bo
 C:\Users\Сергей\Source\Repos\DeliriumBot\DeliriumBot\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Сергей\Source\Repos\DeliriumBot\DeliriumBot\bin\Debug\System.Net.Http.Formatting.xml
 C:\Users\Сергей\Source\Repos\DeliriumBot\DeliriumBot\bin\Debug\Telegram.Bot.xml
+C:\Users\Сергей\Source\Repos\DeliriumBot\DeliriumBot\obj\Debug\DeliriumBot.Strings.resources
