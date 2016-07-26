@@ -9,12 +9,10 @@ namespace DeliriumBot
     class Card
     {
         public string Name { get; }
-        public int Amount { get; }
         public string Description { get; }
-        public Card(string name, int amount, string description)
+        public Card(string name, string description)
         {
             Name = name;
-            Amount = amount;
             Description = description;
         }
     }
