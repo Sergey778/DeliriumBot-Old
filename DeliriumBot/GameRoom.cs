@@ -53,6 +53,12 @@ namespace DeliriumBot
             {
                 client.SendTextMessageAsync(ChatId, CardSet.Count().ToString());
             }
+            else if (commands[0] == "/bancard")
+            {
+                var cardName = string.Concat(text.SkipWhile(x => x != ' ').Skip(1)).Trim();
+                CardSet = CardSet.Where(card => card.Name != cardName);
+                client.SendTextMessageAsync(ChatId, "Карты были убраны из колоды");
+            }
             else
             {
                 PreviousCard = CardSet.First();
