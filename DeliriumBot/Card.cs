@@ -10,10 +10,12 @@ namespace DeliriumBot
     {
         public string Name { get; }
         public string Description { get; }
-        public Card(string name, string description)
+        public string View { get; }
+        public Card(string name, string description, string view)
         {
             Name = name;
             Description = description;
+            View = view;
         }
     }
 }
