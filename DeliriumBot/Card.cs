@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace DeliriumBot
 {
-    class Card
+    internal class Card
     {
         public string Name { get; }
         public string Description { get; }
         public string View { get; }
-        public Card(string name, string description, string view)
+        public Card(string name, string description)
         {
             Name = name;
             Description = description;
-            View = view;
+          //  View = view;
         }
     }
 }

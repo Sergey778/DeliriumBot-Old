@@ -6,32 +6,32 @@ using System.Threading.Tasks;
 
 namespace DeliriumBot
 {
-    class Program
+    internal static class Program
     {
-        private static string DBotToken { get; } = DeliriumBot.Resources.BotToken;
-        private static Telegram.Bot.TelegramBotClient bot;
+       private static string DBotToken { get; } = DeliriumBot.Resources.BotToken;
+        private static Telegram.Bot.TelegramBotClient _bot;
 
-        private static Dictionary<long, GameRoom> rooms = new Dictionary<long, GameRoom>();
-        static void Main(string[] args)
+        private static readonly Dictionary<long, GameRoom> Rooms = new Dictionary<long, GameRoom>();
+        private static void Main(string[] args)
         {
-            bot = new Telegram.Bot.TelegramBotClient(DBotToken);
-            bot.OnMessage += OnReceiveMessage;
-            bot.StartReceiving();
+            _bot = new Telegram.Bot.TelegramBotClient(DBotToken);
+            _bot.OnMessage += OnReceiveMessage;
+            _bot.StartReceiving();
             while (true) { }
         }
 
         private static void OnReceiveMessage(object sender, Telegram.Bot.Args.MessageEventArgs args)
         {
             var id = args.Message.Chat.Id;
-            if (rooms.ContainsKey(id))
+            if (Rooms.ContainsKey(id))
             {
-                rooms[id].HandleMessage(bot, args);
+                Rooms[id].HandleMessage(_bot, args);
             }
             else
             {
                 var room = new GameRoom(id);
-                room.HandleMessage(bot, args);
-                rooms.Add(id, room);
+                room.HandleMessage(_bot, args);
+                Rooms.Add(id, room);
             }
         }
     }

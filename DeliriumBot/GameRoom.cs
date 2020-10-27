@@ -9,11 +9,11 @@ using Telegram.Bot.Types.Enums;
 
 namespace DeliriumBot
 {
-    class GameRoom
+    internal class GameRoom
     {
-        public long ChatId { get; }
-        public IEnumerable<Card> CardSet { get; private set; } = new List<Card>();
-        public Card PreviousCard { get; private set; } = null;
+        private long ChatId { get; }
+        private IEnumerable<Card> CardSet { get; set; } = new List<Card>();
+        private Card PreviousCard { get; set; } = null;
 
         public GameRoom(long chatId)
         {
@@ -28,7 +28,7 @@ namespace DeliriumBot
             }
         }
 
-        public void HandleText(TelegramBotClient client, string text)
+        private void HandleText(TelegramBotClient client, string text)
         {
             var commands = text.Split(' ');
             var newGameCommands = new List<string>
@@ -41,33 +41,34 @@ namespace DeliriumBot
                 CardSet = DeliriumBot.CardSet.GetShuffledCardSet(DeliriumBot.CardSet.GetCardSet(), GetCardSetCount(commands));
                 client.SendTextMessageAsync(ChatId, Strings.NewGameStart);
             }
-            else if (CardSet.Count() == 0)
+            else if (!CardSet.Any())
             {
                 client.SendTextMessageAsync(ChatId, Strings.SetEnded);
             }
-            else if (commands[0] == "?")
+            else switch (commands[0])
             {
-                client.SendTextMessageAsync(ChatId, PreviousCard == null ? Strings.NoPreviousCard : PreviousCard.Description);
-            }
-            else if (commands[0] == "/count")
-            {
-                client.SendTextMessageAsync(ChatId, CardSet.Count().ToString());
-            }
-            else if (commands[0] == "/bancard")
-            {
-                var cardName = string.Concat(text.SkipWhile(x => x != ' ').Skip(1)).Trim();
-                CardSet = CardSet.Where(card => card.Name != cardName);
-                client.SendTextMessageAsync(ChatId, "Карты были убраны из колоды");
-            }
-            else
-            {
-                PreviousCard = CardSet.First();
-                CardSet = CardSet.Skip(1);
-                client.SendTextMessageAsync(ChatId, PreviousCard.Name);
+                case "?":
+                    client.SendTextMessageAsync(ChatId, PreviousCard == null ? Strings.NoPreviousCard : PreviousCard.Description);
+                    break;
+                case "/count":
+                    client.SendTextMessageAsync(ChatId, CardSet.Count().ToString());
+                    break;
+                case "/bancard":
+                {
+                    var cardName = string.Concat(text.SkipWhile(x => x != ' ').Skip(1)).Trim();
+                    CardSet = CardSet.Where(card => card.Name != cardName);
+                    client.SendTextMessageAsync(ChatId, "Карты были убраны из колоды");
+                    break;
+                }
+                default:
+                    PreviousCard = CardSet.First();
+                    CardSet = CardSet.Skip(1);
+                    client.SendTextMessageAsync(ChatId, PreviousCard.Name);
+                    break;
             }
         }
 
-        private int GetCardSetCount(IEnumerable<string> commands)
+        private static int GetCardSetCount(IEnumerable<string> commands)
         {
             try
             {
