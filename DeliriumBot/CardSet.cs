@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DeliriumBot
 {
@@ -10,6 +8,7 @@ namespace DeliriumBot
     {
         private static Dictionary<Card, int> DefaultAmounts { get; set; }
         private static List<Card> DefaultCards { get; set; }
+
         private static void Load()
         {
             DefaultAmounts = new Dictionary<Card, int>();
@@ -29,12 +28,10 @@ namespace DeliriumBot
                 DefaultAmounts.Add(card, defaultCardAmount);
             }
         }
+
         private static List<Card> FillCardSet(List<Card> cardSet, Card fillingCard, int multiplier = 1)
         {
-            for (var i = 0; i < DefaultAmounts[fillingCard] * multiplier; i++)
-            {
-                cardSet.Add(fillingCard);
-            }
+            for (var i = 0; i < DefaultAmounts[fillingCard] * multiplier; i++) cardSet.Add(fillingCard);
             return cardSet;
         }
 
@@ -48,6 +45,7 @@ namespace DeliriumBot
                 list[r] = list[i];
                 list[i] = temp;
             }
+
             return list;
         }
 
