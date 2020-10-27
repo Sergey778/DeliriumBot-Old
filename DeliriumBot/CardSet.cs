@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DeliriumBot
 {
-    class CardSet
+    internal static class CardSet
     {
+        private static Dictionary<Card, int> DefaultAmounts { get; set; }
+        private static List<Card> DefaultCards { get; set; }
 
-        public static Dictionary<Card, int> DefaultAmounts { get; private set; }
-        public static List<Card> DefaultCards { get; private set; }
         private static void Load()
         {
             DefaultAmounts = new Dictionary<Card, int>();
@@ -30,29 +28,28 @@ namespace DeliriumBot
                 DefaultAmounts.Add(card, defaultCardAmount);
             }
         }
+
         private static List<Card> FillCardSet(List<Card> cardSet, Card fillingCard, int multiplier = 1)
         {
-            for (int i = 0; i < DefaultAmounts[fillingCard] * multiplier; i++)
-            {
-                cardSet.Add(fillingCard);
-            }
+            for (var i = 0; i < DefaultAmounts[fillingCard] * multiplier; i++) cardSet.Add(fillingCard);
             return cardSet;
         }
 
         private static IEnumerable<T> Shuffle<T>(List<T> list)
         {
             var random = new Random();
-            for (int i = list.Count() - 1; i > 1; i--)
+            for (var i = list.Count() - 1; i > 1; i--)
             {
-                int r = random.Next(i + 1);
+                var r = random.Next(i + 1);
                 var temp = list[r];
                 list[r] = list[i];
                 list[i] = temp;
             }
+
             return list;
         }
 
-        public static List<Card> GetCardSet()
+        public static IEnumerable<Card> GetCardSet()
         {
             Load();
             return DefaultCards;
@@ -61,10 +58,7 @@ namespace DeliriumBot
         public static IEnumerable<Card> GetShuffledCardSet(IEnumerable<Card> cardSet, int mulptiplier = 1)
         {
             var result = new List<Card>(64);
-            foreach (var card in cardSet)
-            {
-                result = FillCardSet(result, card, mulptiplier);
-            }
+            result = cardSet.Aggregate(result, (current, card) => FillCardSet(current, card, mulptiplier));
             return Shuffle(result);
         }
     }
